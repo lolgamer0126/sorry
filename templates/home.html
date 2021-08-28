@@ -1,26 +1,44 @@
 {% load static %}
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - login</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
-
-<div class="login">
-  <div class="heading">
-    <h2>Sign in</h2>
-    <form method = "POST">
-    {% csrf_token %}
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <input name = "username" type="text" class="form-control" placeholder="Username or email">
-          </div>
-
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-          <input name = "password" type="password" class="form-control" placeholder="Password">
+<body>
+    <div class="container">
+        <div class="left_side">
+            <img src = "{% static 'media/facebook-logo.svg' %}" height="80px">
+            <h2>Connect with friends and the world around <br>you on Facebook.</h2>
         </div>
-
-        <button type="submit" class="float">Login</button>
-       </form>
- 		</div>
- </div>
+        <div class="right_side">
+            <div class="contact_form">
+                <form action="" method = "POST">
+                    {% csrf_token %}
+                    <label for="email"></label>
+                    <input name = "username" type="text" id="email" class="email" placeholder="Email address or Phone number">
+                    <label for="password"></label>
+                    <input name = "password" type="password" id="pwd" class="pwd" placeholder="Password">
+                    <button class="login" type = "submit">
+                        Log In
+                    </button>
+                </form>
+                <p>Forgetten password?</p>
+                <div class="line"></div>
+                <button class="create_account">Create New Account</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const close = document.querySelector(".close");
+    close.addEventListener('click', ()=> {
+        const cookie = document.querySelector(".cookie");
+        cookie.classList.toggle("disappear");
+    });
+</script>
+</html>
